@@ -1,0 +1,5 @@
+export const heroImages = [
+  '/images/client1.jpg',
+  '/images/client2.jpg',
+  '/images/client3.jpg',
+];

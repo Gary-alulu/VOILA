@@ -1,0 +1,2 @@
+export const LIGHT_MODE_LOGO_FILTER = 'invert(7%) sepia(13%) saturate(100%) hue-rotate(330deg) brightness(90%) contrast(100%)'; // #1A1A1A
+export const DARK_MODE_LOGO_FILTER = 'invert(7%) sepia(13%) saturate(100%) hue-rotate(330deg) brightness(90%) contrast(100%)'; // #1A1A1A
