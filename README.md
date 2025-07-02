@@ -1,8 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VOILA Perfume E-commerce Platform
+
+This repository contains the code for the VOILA Perfume e-commerce platform, built with Next.js. The project aims to provide a modern and responsive online store for perfumes, offering a seamless shopping experience for users.
+
+## Project Structure
+
+The main application code resides in the `voila-perfume-next/` directory.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, navigate into the `voila-perfume-next` directory and install the dependencies:
+
+```bash
+cd voila-perfume-next
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,7 +35,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the pages and components within the `voila-perfume-next/src/` directory. The application will auto-update as you edit the files.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
