@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all contents of the .next folder
+.next
+
+# Ignore node_modules folder
+node_modules
+
+# Ignore Vercel artifacts
+.vercel

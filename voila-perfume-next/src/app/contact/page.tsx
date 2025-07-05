@@ -1,11 +1,16 @@
+'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
+const MotionSection = dynamic(() => import('framer-motion').then(mod => mod.motion.section), { ssr: false });
+const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
 
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-off-white text-warm-gray p-4 md:p-8 lg:p-12">
       {/* Intro Section */}
-      <motion.section
+      <MotionSection
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -19,11 +24,11 @@ const ContactPage = () => {
           have questions about your order, or wish to explore press and collaboration opportunities,
           we&apos;re here to connect. Your journey into the world of exquisite fragrances begins with a conversation.
         </p>
-      </motion.section>
+      </MotionSection>
 
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         {/* Contact Information Block */}
-        <motion.section
+        <MotionSection
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -60,10 +65,10 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-        </motion.section>
+        </MotionSection>
 
         {/* Interactive Form */}
-        <motion.section
+        <MotionSection
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -123,7 +128,7 @@ const ContactPage = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-rose-gold focus:border-rose-gold transition-all duration-300 ease-in-out"
               ></textarea>
             </div>
-            <motion.button
+            <MotionButton
               type="submit"
               whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(255, 192, 203, 0.6)" }}
               whileTap={{ scale: 0.98 }}
@@ -132,9 +137,9 @@ const ContactPage = () => {
                          hover:from-blush-pink hover:to-muted-gold transition-all duration-300 ease-in-out"
             >
               Send Message
-            </motion.button>
+            </MotionButton>
           </form>
-        </motion.section>
+        </MotionSection>
       </div>
 
       {/* Optional CTA Banner - Placeholder */}

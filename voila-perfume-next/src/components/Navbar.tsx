@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
       {/* Navigation Links (Desktop) */}
       <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-white dark:hover:text-white">
+              <Link key={link.name} href={link.href} className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
                 {link.name}
               </Link>
             ))}
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Toggle Button */}
       <div className="md:hidden flex items-center">
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-[#1A1A1A] dark:text-white focus:outline-none">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-[#1A1A1A] dark:text-[#1A1A1A] focus:outline-none">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
       <div className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-dark-bg shadow-md py-4 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="flex flex-col items-center space-y-4">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-[#1A1A1A] dark:text-white hover:text-gray-600 dark:hover:text-gray-300 text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link key={link.name} href={link.href} className="text-[#1A1A1A] dark:text-[#1A1A1A] hover:text-gray-600 dark:hover:text-[#1A1A1A] text-lg" onClick={() => setIsMobileMenuOpen(false)}>
               {link.name}
             </Link>
           ))}
