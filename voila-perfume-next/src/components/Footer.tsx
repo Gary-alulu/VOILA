@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0B0B0B] text-white">
       {/* Newsletter Section */}
-      <div className="container mx-auto px-4 py-16 text-center relative overflow-hidden">
+      <div className="container mx-auto px-6 py-16 text-center relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,13 +17,13 @@ export default function Footer() {
           <p className="text-lg text-neutral-400 mb-8">
             Be first to receive exclusive launches, scent stories, and secret sales.
           </p>
-          <div className="flex justify-center gap-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-2 px-4">
             <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-6 py-3 w-full max-w-md rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all duration-300"
-            />
-            <button className="px-8 py-3 bg-[#D4AF37] text-white rounded-xl font-satoshi hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-300 transform hover:scale-[1.02]">
+                type="email"
+                placeholder="Enter your email"
+                className="px-6 py-3 w-full sm:max-w-md rounded-xl bg-neutral-900 border border-neutral-800 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all duration-300"
+              />
+            <button className="px-8 py-3 bg-[#D4AF37] text-white rounded-xl font-satoshi hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-300 transform hover:scale-[1.02] mt-2 sm:mt-0">
               Subscribe
             </button>
           </div>
@@ -31,8 +31,8 @@ export default function Footer() {
       </div>
 
       {/* Navigation Columns */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="space-y-4">
             <h2 className="font-playfair text-2xl text-[#D4AF37]">VOILÀ.</h2>
@@ -67,7 +67,7 @@ export default function Footer() {
           <div>
             <h4 className="font-playfair text-lg mb-4">Learn</h4>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-neutral-400 hover:text-[#D4AF37] transition-colors">Blog & Stories</Link></li>
+              <li><Link href="/blog-stories" className="text-neutral-400 hover:text-[#D4AF37] transition-colors">Blog & Stories</Link></li>
               <li><Link href="#" className="text-neutral-400 hover:text-[#D4AF37] transition-colors">FAQs</Link></li>
               <li><Link href="#" className="text-neutral-400 hover:text-[#D4AF37] transition-colors">Scent Guide</Link></li>
             </ul>
@@ -97,7 +97,7 @@ export default function Footer() {
 
       {/* Copyright Bar */}
       <div className="border-t border-neutral-800">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-6 py-6">
           <p className="text-xs text-neutral-400 text-center">&copy; {new Date().getFullYear()} VOILÀ. All rights reserved.</p>
         </div>
       </div>

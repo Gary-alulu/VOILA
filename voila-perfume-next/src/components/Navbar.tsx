@@ -21,14 +21,14 @@ const Navbar: React.FC = () => {
     <nav className="w-full bg-white shadow-md py-4 px-6 flex items-center justify-between fixed top-0 left-0 z-50 dark:bg-dark-bg dark:shadow-lg">
       {/* Logo */}
       <div className="flex items-center">
-        <Link href="/" className="text-2xl font-bold text-[#1A1A1A] font-playfair dark:text-[#1A1A1A]">
+        <Link href="/" className="text-xl md:text-2xl font-bold text-[#1A1A1A] font-playfair dark:text-[#1A1A1A]">
             VOILÀ
         </Link>
       </div>
 
       {/* Navigation Links */}
       {/* Navigation Links (Desktop) */}
-      <div className="hidden md:flex space-x-8">
+      <div className="hidden md:flex flex-1 justify-center space-x-8">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href} className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
                 {link.name}
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu Toggle Button */}
       <div className="md:hidden flex items-center">
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-[#1A1A1A] dark:text-[#1A1A1A] focus:outline-none">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             ) : (
@@ -57,11 +57,12 @@ const Navbar: React.FC = () => {
               {link.name}
             </Link>
           ))}
+
         </div>
       </div>
 
       {/* Search and Icons */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 md:space-x-4">
 
         <button
           onClick={toggleTheme}
@@ -69,6 +70,11 @@ const Navbar: React.FC = () => {
         >
           {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
         </button>
+        <Link href="/profile" className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
+          <div className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+        </Link>
         <Link href="/cart" className="text-[#1A1A1A] hover:text-[#1A1A1A] dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
           <svg
             xmlns="http://www.w3.org/2000/svg"

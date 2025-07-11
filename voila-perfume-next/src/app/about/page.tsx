@@ -6,25 +6,14 @@ import BentoImageSlider from '../../components/BentoImageSlider';
 
 
 const AboutPage = () => {
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-white font-satoshi">
       {/* Our Story Section */}
       <section
         id="our-story"
-        className="relative py-20 px-4"
+        className="relative py-20 px-6"
       >
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -64,7 +53,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-6 py-20">
         <div className="flex flex-col md:flex-row gap-12">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -73,9 +62,9 @@ const AboutPage = () => {
             transition={{ duration: 0.8 }}
             className="md:w-1/2 font-inter text-lg leading-relaxed"
           >
-            <p className="mb-4">A heartfelt story of VOILÀ’s origins — inspired by timeless femininity and masculine mystique. Our journey began with a simple desire: to capture the ephemeral beauty of scent and transform it into an enduring art form.</p>
-            <p className="mb-4">Every fragrance we create is a narrative, a whisper of memories, and a bold statement of individuality. We believe that perfume is more than just a product; it's an extension of oneself, a silent language spoken through the senses.</p>
-            <p>From the initial spark of inspiration to the final delicate pour, our process is steeped in passion and precision, honoring the traditions of haute perfumery while embracing innovative techniques.</p>
+            <p className="mb-4 text-[#1A1A1A]">A heartfelt story of VOILÀ’s origins — inspired by timeless femininity and masculine mystique. Our journey began with a simple desire: to capture the ephemeral beauty of scent and transform it into an enduring art form.</p>
+            <p className="mb-4 text-[#1A1A1A]">Every fragrance we create is a narrative, a whisper of memories, and a bold statement of individuality. We believe that perfume is more than just a product; it's an extension of oneself, a silent language spoken through the senses.</p>
+            <p className="text-[#1A1A1A]">From the initial spark of inspiration to the final delicate pour, our process is steeped in passion and precision, honoring the traditions of haute perfumery while embracing innovative techniques.</p>
           </motion.div>
           <motion.div
             initial={{ x: 50, opacity: 0 }}
@@ -103,7 +92,7 @@ const AboutPage = () => {
 
       {/* Our Craft Section */}
       <section className="bg-dark-bg-alt text-white py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <motion.h2
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -137,7 +126,7 @@ const AboutPage = () => {
       </section>
 
       {/* Sustainability Section */}
-      <section className="bg-light-bg text-gray-900 py-20">
+      <section className="bg-light-bg text-gray-900 py-20 px-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -171,7 +160,7 @@ const AboutPage = () => {
             className="md:w-1/2"
           >
             {/* Placeholder for Earth-toned illustration or animated icons */}
-            <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 font-inter">
+            <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-300 font-inter">
               Illustration Placeholder
             </div>
           </motion.div>
@@ -180,7 +169,7 @@ const AboutPage = () => {
 
       {/* Footer */}
       <footer className="bg-dark-bg text-white py-10 text-center font-inter">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <nav className="mb-4">
             <a href="#" className="mx-4 hover:underline text-soft-gold">Shop Perfumes</a>
             <a href="#" className="mx-4 hover:underline text-soft-gold">Meet the Founder</a>

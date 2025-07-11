@@ -17,6 +17,7 @@ import Navbar from "../components/Navbar";
 import FooterClient from "../components/FooterClient";
 import { ThemeProvider } from "../components/ThemeProvider";
 import LoadingScreen from "../components/LoadingScreen";
+import { ReduxProvider } from "@/components/Provider";
 
 import type { Metadata } from 'next';
 
@@ -58,14 +59,16 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.variable} ${inter.variable} antialiased`} 
       >
-        <ThemeProvider>
-          <Navbar />
-          {/* The following links are typically part of the Navbar component, but are placed here for demonstration of insertion if needed in layout.tsx */}
-          {/* <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About</Link> */}
-          {/* <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link> */}
-          <LoadingScreen>{children}</LoadingScreen>
-          <FooterClient />
-        </ThemeProvider>
+        <ReduxProvider>
+          <ThemeProvider>
+            <Navbar />
+            {/* The following links are typically part of the Navbar component, but are placed here for demonstration of insertion if needed in layout.tsx */}
+            {/* <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About</Link> */}
+            {/* <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link> */}
+            <LoadingScreen>{children}</LoadingScreen>
+            <FooterClient />
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

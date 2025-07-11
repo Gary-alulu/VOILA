@@ -3,6 +3,7 @@ import HeroSection from './hero-section';
 import BrandLogos from '../components/BrandLogos';
 import { brandLogos } from '../data/brandLogos';
 import ProductCard from '../components/ProductCard';
+import { Counter } from '@/components/Counter';
 
 // Assuming you have a data file like src/data/products.ts
 import { popularProducts } from '../data/popularProducts';
@@ -61,6 +62,11 @@ export default function Home() {
 
 
 
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <Counter />
+        </div>
+      </section>
     </main>
   );
 }
