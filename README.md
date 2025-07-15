@@ -1,4 +1,4 @@
-# VOILA Perfume E-commerce Platform
+|# VOILA Perfume E-commerce Platform
 
 This repository contains the code for the VOILA Perfume e-commerce platform, built with Next.js. The project aims to provide a modern and responsive online store for perfumes, offering a seamless shopping experience for users.
 
@@ -53,3 +53,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Deployment Status
+
+**Status:** Development in progress. Latest features include:
+- Blog & Stories page
+- About page with Our Story, Our Craft, and Sustainability sections
+- Updated navigation and footer links
+
+## Troubleshooting
+
+If you encounter deployment issues, consider the following:
+
+- **Check Vercel Logs:** Review the deployment logs on Vercel for specific error messages.
+- **Dependency Issues:** Ensure all dependencies are correctly installed and compatible.
+- **Environment Variables:** Verify that all necessary environment variables are configured on Vercel.
+- **Build Command:** Confirm the build command in `package.json` and Vercel settings is correct.
+- **Next.js Version:** Check for compatibility issues with the Next.js version and Vercel's build environment.

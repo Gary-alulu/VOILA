@@ -15,6 +15,9 @@
 /.next/
 /out/
 
+# Include the Next.js project directory
+!/voila-perfume-next/
+
 # production
 /build
 
