@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import SunIcon from './SunIcon';
 import MoonIcon from './MoonIcon';
 import { navLinks } from '@/data/navLinks';
+import UserIcon from './UserIcon';
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -30,7 +31,7 @@ const Navbar: React.FC = () => {
       {/* Navigation Links (Desktop) */}
       <div className="hidden md:flex flex-1 justify-center space-x-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
+              <Link key={link.name} href={link.href} className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 {link.name}
               </Link>
             ))}
@@ -53,7 +54,7 @@ const Navbar: React.FC = () => {
       <div className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-dark-bg shadow-md py-4 transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="flex flex-col items-center space-y-4">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-[#1A1A1A] dark:text-[#1A1A1A] hover:text-gray-600 dark:hover:text-[#1A1A1A] text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link key={link.name} href={link.href} className="text-[#1A1A1A] dark:text-[#1A1A1A] hover:text-gray-600 dark:hover:text-[#1A1A1A] text-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105" onClick={() => setIsMobileMenuOpen(false)}>
               {link.name}
             </Link>
           ))}
@@ -66,16 +67,14 @@ const Navbar: React.FC = () => {
 
         <button
           onClick={toggleTheme}
-          className="text-[#1A1A1A] hover:text-[#1A1A1A] dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]"
+          className="text-[#1A1A1A] hover:text-[#1A1A1A] dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A] transition-all duration-300 ease-in-out hover:scale-110"
         >
           {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
         </button>
-        <Link href="/profile" className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
-          <div className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          </div>
+        <Link href="/profile" className="text-[#1A1A1A] hover:text-[#1A1A1A] font-satoshi dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A] transition-all duration-300 ease-in-out hover:scale-110">
+          <UserIcon />
         </Link>
-        <Link href="/cart" className="text-[#1A1A1A] hover:text-[#1A1A1A] dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A]">
+        <Link href="/cart" className="text-[#1A1A1A] hover:text-[#1A1A1A] dark:text-[#1A1A1A] dark:hover:text-[#1A1A1A] transition-all duration-300 ease-in-out hover:scale-110">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

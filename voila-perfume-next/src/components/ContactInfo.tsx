@@ -4,21 +4,21 @@ import React from 'react';
 
 const ContactInfo = () => {
   return (
-    <section className="mb-8 p-6 bg-white/5 rounded-xl shadow-lg border border-white/10">
-      <h3 className="text-xl font-satoshi mb-4 text-white">Contact Information</h3>
+    <section className="mb-8 p-6 bg-light-bg-alt dark:bg-dark-bg-alt rounded-xl shadow-lg border border-white/10">
+      <h3 className="text-xl font-satoshi mb-4 text-text-primary-light dark:text-text-primary-dark">Contact Information</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="relative z-0 w-full mb-6 group">
           <input
             type="text"
             name="first_name"
             id="first_name"
-            className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-accent-gold focus:outline-none focus:ring-0 focus:border-accent-gold peer"
+            className="block py-2.5 px-0 w-full text-sm text-text-primary-light dark:text-text-primary-dark bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-accent-gold focus:outline-none focus:ring-0 focus:border-accent-gold peer"
             placeholder=" "
             required
           />
           <label
             htmlFor="first_name"
-            className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-accent-gold peer-focus:dark:text-accent-gold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-text-secondary-light dark:text-text-secondary-dark duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-accent-gold peer-focus:dark:text-accent-gold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             First Name
           </label>
@@ -28,13 +28,13 @@ const ContactInfo = () => {
             type="text"
             name="last_name"
             id="last_name"
-            className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-accent-gold focus:outline-none focus:ring-0 focus:border-accent-gold peer"
+            className="block py-2.5 px-0 w-full text-sm text-text-primary-light dark:text-text-primary-dark bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-accent-gold focus:outline-none focus:ring-0 focus:border-accent-gold peer"
             placeholder=" "
             required
           />
           <label
             htmlFor="last_name"
-            className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-accent-gold peer-focus:dark:text-accent-gold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-text-secondary-light dark:text-text-secondary-dark duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-accent-gold peer-focus:dark:text-accent-gold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Last Name
           </label>
