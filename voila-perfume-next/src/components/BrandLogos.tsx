@@ -25,7 +25,9 @@ const BrandLogos: React.FC<BrandLogosProps> = ({ logos }) => {
   return (
     <div className="w-full overflow-hidden py-12">
       <div className="flex items-center justify-around">
-        {logos.map((logo, index) => (
+        {logos
+          .filter(logo => !logo.src.includes('cdn.brandfetch.io'))
+          .map((logo, index) => (
           <motion.div
             key={`logo-${index}`}
             className="flex-shrink-0 px-4"
@@ -37,10 +39,7 @@ const BrandLogos: React.FC<BrandLogosProps> = ({ logos }) => {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              style={['https://cdn.brandfetch.io/hermes.com/w/512/h/297/theme/light/logo?c=1idoyz8oMoGHqXuBSI0',
-                       'https://cdn.brandfetch.io/louisvuitton.com/w/512/h/53/theme/light/logo?c=1idoyz8oMoGHqXuBSI0',
-                       'https://cdn.brandfetch.io/chanel.com/w/512/h/82/theme/light/logo?c=1idoyz8oMoGHqXuBSI0'
-                      ].includes(logo.src) ? { filter: LIGHT_MODE_LOGO_FILTER } : { filter: filterStyle }}
+              style={{ filter: filterStyle }}
               className="rounded-md"
             />
           </motion.div>

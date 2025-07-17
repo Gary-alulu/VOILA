@@ -1,5 +1,7 @@
 import { Playfair_Display, Inter } from 'next/font/google';
 
+import { Playfair_Display, Inter, Caveat } from 'next/font/google';
+
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair-display',
@@ -9,6 +11,13 @@ const playfairDisplay = Playfair_Display({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-caveat',
+  weight: '400',
   display: 'swap',
 });
 
@@ -57,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} antialiased`} 
+        className={`${playfairDisplay.variable} ${inter.variable} ${caveat.variable} antialiased`} 
       >
         <ReduxProvider>
           <ThemeProvider>

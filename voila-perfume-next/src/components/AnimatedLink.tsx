@@ -22,7 +22,7 @@ const AnimatedLink: React.FC<AnimatedLinkProps> = ({
   return (
     <Link
       href={href}
-      className={`text-neutral-400 hover:text-[#D4AF37] transition-colors ${effectClasses[hoverEffect]} ${className}`}
+      className={`text-mistGray hover:text-imperialGold transition-colors ${effectClasses[hoverEffect]} ${className} dark:text-cloudedPearl dark:hover:text-imperialGold`}
     >
       {children}
     </Link>

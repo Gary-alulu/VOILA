@@ -31,9 +31,10 @@ export default function ProductCard({
   return (
     <motion.div
       className="relative w-full sm:w-64 md:w-72 lg:w-80 xl:w-96 p-4 rounded-2xl shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-20 bg-white border border-opacity-30 border-white-200 overflow-hidden cursor-pointer"
+      data-product-id={productId}
       whileHover={{
         scale: 1.02,
-        boxShadow: '0 0 30px rgba(255, 192, 203, 0.8), 0 0 60px rgba(221, 160, 221, 0.6)', // Rose gold and muted lavender glow
+        boxShadow: '0 0 30px var(--glow-gold), 0 0 60px var(--soft-lavender)',
         transition: { duration: 0.3, ease: 'easeOut' },
       }}
       initial={{ opacity: 0, y: 50 }}

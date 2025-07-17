@@ -43,6 +43,11 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+:root {
+  --glow-gold: rgba(212, 175, 55, 0.55);
+  --soft-lavender: rgba(174, 160, 255, 0.4);
+}
+
 .dark body {
     background-color: #00001A; /* Darker Navy Blue, closer to black */
     color: #F8F5F0;

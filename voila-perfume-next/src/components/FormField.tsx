@@ -15,10 +15,12 @@ interface FormFieldProps {
   onBlur: () => void;
   name: string;
   value: string;
-  ref?: React.Ref<any>;
+  ref?: React.Ref<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>;
 }
 
-const FormField: React.FC<FormFieldProps> = ({
+const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement, FormFieldProps>(
+  ({
+
   label,
   id,
   type = 'text',
@@ -32,9 +34,8 @@ const FormField: React.FC<FormFieldProps> = ({
   onBlur,
   name,
   value,
-  ref,
-}) => {
-  const inputClasses = "w-full p-3 border border-gray-400 rounded-lg focus:ring-rose-gold focus:border-rose-gold transition-all duration-300 ease-in-out bg-white dark:bg-velvet-black text-charcoal-black dark:text-off-white";
+}, ref) => {
+  const inputClasses = "w-full p-3 border border-cloudGray rounded-lg focus:ring-imperialGold focus:border-imperialGold transition-all duration-300 ease-in-out bg-softSilver dark:bg-glassPanelBlack text-charcoalBlack dark:text-whiteSnow";
 
   const renderField = () => {
     switch (as) {
@@ -92,12 +93,24 @@ const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-text-primary-light dark:text-text-primary-dark mb-1">
+      <label htmlFor={id} className="block text-sm font-medium text-charcoalBlack dark:text-whiteSnow mb-1">
         {label}
       </label>
       {renderField()}
     </div>
   );
 };
+
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-text-primary-light dark:text-text-primary-dark mb-1">
+        {label}
+      </label>
+      {renderField()}
+    </div>
+  );
+});
+
+FormField.displayName = 'FormField';
 
 export default FormField;
