@@ -42,6 +42,14 @@ const colors = {
   glowGold: 'rgba(212, 175, 55, 0.55)',
   softLavender: 'rgba(174, 160, 255, 0.4)',
   moonWhite: 'rgba(255, 255, 255, 0.6)',
+
+  // Custom Palette
+  'ivory-white': '#F8F5F2',
+  'dark-charcoal': '#121212',
+  'soft-gold': '#D4AF37',
+  'rose-blush': '#E0BBE4',
+  'champagne-gold': '#F7D794',
 };
+
 
 export default colors;

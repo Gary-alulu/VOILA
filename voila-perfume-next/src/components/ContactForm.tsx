@@ -96,9 +96,7 @@ const ContactForm: React.FC = () => {
               ariaLabel="Subject"
               {...field}
             >
-              <div className="bg-light-bg dark:bg-dark-bg">
-  
-</div>
+
               <option value="collaboration">Collaboration</option>
               <option value="feedback">Feedback</option>
             </FormField>

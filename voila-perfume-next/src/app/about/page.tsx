@@ -62,9 +62,9 @@ const AboutPage = () => {
             transition={{ duration: 0.8 }}
             className="md:w-1/2 font-inter text-lg leading-relaxed"
           >
-            <p className="mb-4 text-[#1A1A1A]">A heartfelt story of VOILÀ’s origins — inspired by timeless femininity and masculine mystique. Our journey began with a simple desire: to capture the ephemeral beauty of scent and transform it into an enduring art form.</p>
-            <p className="mb-4 text-[#1A1A1A]">Every fragrance we create is a narrative, a whisper of memories, and a bold statement of individuality. We believe that perfume is more than just a product; it's an extension of oneself, a silent language spoken through the senses.</p>
-            <p className="text-[#1A1A1A]">From the initial spark of inspiration to the final delicate pour, our process is steeped in passion and precision, honoring the traditions of haute perfumery while embracing innovative techniques.</p>
+            <p className="mb-4 text-gray-900">A heartfelt story of VOILÀ’s origins — inspired by timeless femininity and masculine mystique. Our journey began with a simple desire: to capture the ephemeral beauty of scent and transform it into an enduring art form.</p>
+            <p className="mb-4 text-gray-900">Every fragrance we create is a narrative, a whisper of memories, and a bold statement of individuality. We believe that perfume is more than just a product; it's an extension of oneself, a silent language spoken through the senses.</p>
+            <p className="text-gray-900">From the initial spark of inspiration to the final delicate pour, our process is steeped in passion and precision, honoring the traditions of haute perfumery while embracing innovative techniques.</p>
           </motion.div>
           <motion.div
             initial={{ x: 50, opacity: 0 }}
@@ -135,17 +135,17 @@ const AboutPage = () => {
             transition={{ duration: 0.8 }}
             className="md:w-1/2"
           >
-            <h2 className="text-5xl font-playfair mb-6">Luxury with a Conscience</h2>
-            <p className="text-lg mb-4 font-inter">
+            <h2 className="text-5xl font-playfair mb-6 text-gray-900 dark:text-white">Luxury with a Conscience</h2>
+            <p className="text-lg mb-4 font-inter text-gray-900 dark:text-white">
               VOILÀ prioritizes sustainability without compromising on quality. We are committed to:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-lg font-inter">
+            <ul className="list-disc list-inside space-y-2 text-lg font-inter text-gray-900 dark:text-white">
               <li>Refillable bottles</li>
               <li>Ethically sourced ingredients</li>
               <li>Eco-friendly packaging</li>
               <li>Zero-waste production goals</li>
             </ul>
-            <p className="text-xl italic mt-6 font-playfair">
+            <p className="text-xl italic mt-6 font-playfair text-gray-900 dark:text-white">
               “We believe fragrance should leave an impression, not a footprint.”
             </p>
             <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-lg inline-block font-inter">

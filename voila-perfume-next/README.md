@@ -1,58 +1,63 @@
-# Voila Perfume Next
+# Voila Perfume Next.js Application
 
-Voila Perfume Next is a modern e-commerce application built with Next.js, designed to showcase and sell perfumes. This project focuses on a clean user interface, robust form handling, and performance optimizations.
+This is a Next.js project for the Voila Perfume e-commerce platform.
 
-## Key Features
+## Table of Contents
 
-*   **Dark Mode Compatibility**: Seamlessly switch between light and dark themes for an enhanced user experience.
-*   **Contact Form**: Implemented with `react-hook-form` for efficient form validation and submission.
-*   **Image Optimization**: Leverages Next.js's built-in image optimization for faster loading times.
-*   **Centralized Theming**: Utilizes Tailwind CSS and a `tokens.ts` file for consistent and easily manageable styling.
-*   **Component-Based Architecture**: Organized into reusable React components for maintainability and scalability.
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
 
-## Project Structure
+## Installation
 
-*   `src/app`: Main application routes and pages.
-*   `src/components`: Reusable UI components (e.g., `ContactIntro`, `ContactInfo`, `FormField`).
-*   `src/styles`: Global styles and Tailwind CSS configurations.
-*   `src/utils`: Utility functions.
-*   `tailwind.config.ts`: Tailwind CSS configuration, including custom theme extensions.
-*   `next.config.ts`: Next.js configuration.
+To set up the project locally, follow these steps:
 
-## Technologies Used
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd voila-perfume-next
+    ```
 
-*   **Next.js**: React framework for production.
-*   **React**: JavaScript library for building user interfaces.
-*   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-*   **TypeScript**: Superset of JavaScript that adds static types.
-*   **react-hook-form**: For flexible and extensible forms with easy validation.
-*   **Redux Toolkit**: For state management (if applicable, based on `package.json`).
-*   **Framer Motion**: For animations (based on `package.json`).
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or yarn install
+    # or pnpm install
+    ```
 
-## Getting Started
+3.  **Environment Variables:**
+    Create a `.env.local` file in the root of the `voila-perfume-next` directory and add your environment variables. For MongoDB connection, you'll need:
+    ```
+    MONGODB_URI=mongodb://localhost:27017/voila_perfume
+    ```
 
-First, install the dependencies:
+## Running the Project
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
-
-Then, run the development server:
+To run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or yarn dev
+# or pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Project Structure
+
+-   `src/app`: Contains Next.js App Router pages and API routes.
+-   `src/components`: Reusable React components.
+-   `src/lib`: Utility functions and MongoDB connection logic.
+-   `src/styles`: Global styles and Tailwind CSS configurations.
+-   `src/types`: TypeScript type definitions.
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and ensure they adhere to the project's coding standards.
+4.  Write clear, concise commit messages.
+5.  Submit a pull request.

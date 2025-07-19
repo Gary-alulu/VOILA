@@ -24,4 +24,12 @@ export async function fetchProducts(type: 'popular' | 'newArrivals'): Promise<Pr
   });
 }
 
-// You can add more functions here for fetching single product details, etc.
+export const fetchProductById = (productId: string): Promise<ProductCardProps | null> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const allProducts = [...popularProducts, ...newArrivals];
+      const product = allProducts.find(p => p.productId === productId);
+      resolve(product || null);
+    }, 500);
+  });
+};

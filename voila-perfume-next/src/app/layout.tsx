@@ -27,6 +27,8 @@ import FooterClient from "../components/FooterClient";
 import { ThemeProvider } from "../components/ThemeProvider";
 import LoadingScreen from "../components/LoadingScreen";
 import { ReduxProvider } from "@/components/Provider";
+import ErrorBoundary from "../components/ErrorBoundary";
+import { Providers } from './providers';
 
 import type { Metadata } from 'next';
 
@@ -53,6 +55,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 
 
 
@@ -68,16 +75,20 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.variable} ${inter.variable} ${caveat.variable} antialiased`} 
       >
-        <ReduxProvider>
+        <Providers>
           <ThemeProvider>
-            <Navbar />
-            {/* The following links are typically part of the Navbar component, but are placed here for demonstration of insertion if needed in layout.tsx */}
-            {/* <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About</Link> */}
-            {/* <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link> */}
-            <LoadingScreen>{children}</LoadingScreen>
-            <FooterClient />
+            <ReduxProvider>
+              <Navbar />
+              {/* The following links are typically part of the Navbar component, but are placed here for demonstration of insertion if needed in layout.tsx */}
+              {/* <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About</Link> */}
+              {/* <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link> */}
+              <ErrorBoundary>
+                <LoadingScreen>{children}</LoadingScreen>
+              </ErrorBoundary>
+              <FooterClient />
+            </ReduxProvider>
           </ThemeProvider>
-        </ReduxProvider>
+        </Providers>
       </body>
     </html>
   );

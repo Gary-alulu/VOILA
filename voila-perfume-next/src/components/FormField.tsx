@@ -99,16 +99,6 @@ const FormField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement | HTML
       {renderField()}
     </div>
   );
-};
-
-  return (
-    <div>
-      <label htmlFor={id} className="block text-sm font-medium text-text-primary-light dark:text-text-primary-dark mb-1">
-        {label}
-      </label>
-      {renderField()}
-    </div>
-  );
 });
 
 FormField.displayName = 'FormField';

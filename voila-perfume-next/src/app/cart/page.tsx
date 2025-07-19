@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+
 
 const CartPage = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -27,25 +27,17 @@ const CartPage = () => {
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left Section: Cart Overview (60% width on desktop) */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full md:w-3/5"
+        <div className="w-full md:w-3/5"
         >
           <h2 className="text-2xl font-serif mb-6 dark:text-white">Your Items</h2>
           {/* Placeholder for Cart Item Cards */}
           <div className="bg-light-bg-alt dark:bg-dark-bg-alt p-6 rounded-2xl shadow-xl min-h-[300px] flex items-center justify-center">
             <p className="text-gray-500 dark:text-gray-400">Cart items will be displayed here.</p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Right Section: Summary + CTA (40% width on desktop) */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className={`w-full md:w-2/5 ${isMobile ? 'fixed bottom-0 left-0 right-0 z-50 bg-light-bg-alt dark:bg-dark-bg-alt p-4 shadow-lg rounded-t-2xl' : 'sticky top-8'}`}
+        <div className={`w-full md:w-2/5 ${isMobile ? 'fixed bottom-0 left-0 right-0 z-50 bg-light-bg-alt dark:bg-dark-bg-alt p-4 shadow-lg rounded-t-2xl' : 'sticky top-8'}`}
         >
           <h2 className="text-2xl font-serif mb-6 dark:text-white">You’re almost there…</h2>
           <div className="bg-light-bg-alt dark:bg-dark-bg-alt p-6 rounded-2xl shadow-xl">
@@ -95,13 +87,11 @@ const CartPage = () => {
                     className="flex-grow p-3 rounded-l-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-gold-400 transition-all duration-300"
                     placeholder="Enter code"
                   />
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(147, 51, 234, 0.6)' }} // Purple glow
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     className="bg-royal-purple text-white p-3 rounded-r-lg font-semibold transition-all duration-300"
                   >
                     Apply
-                  </motion.button>
+                  </button>
                 </div>
               </div>
               <div className="flex justify-between items-center border-t border-gray-300 dark:border-gray-600 pt-4 mt-4">
@@ -111,42 +101,35 @@ const CartPage = () => {
             </div>
 
             {/* Call-To-Action Button */}
-            <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(106, 13, 173, 0.8)' }} // Stronger royal purple glow
-              whileTap={{ scale: 0.98 }}
+            <button
               className="w-full bg-royal-purple text-white py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg"
               disabled={true} // Placeholder for empty cart state
             >
               Proceed to Checkout
-            </motion.button>
+            </button>
 
             {/* Brand Message */}
             <p className="text-center text-sm italic text-gray-500 dark:text-gray-400 mt-6">
               “Scent is the silent story of who you are.”
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Empty Cart UX Placeholder */}
       {false && ( // This will be conditionally rendered based on cart state
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <div
           className="flex flex-col items-center justify-center mt-20 text-gray-500 dark:text-gray-400"
         >
           {/* Placeholder for glowing perfume bottle icon */}
           <div className="text-6xl mb-4">🧴</div>
           <p className="text-xl mb-6">Your cart is scent-free.</p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             className="bg-soft-gold text-white py-3 px-8 rounded-full font-semibold shadow-lg"
           >
             Explore Collections
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       )}
     </div>
   );
