@@ -9,7 +9,6 @@ const colors = {
   deepCharcoal: '#121212',
   darkText: '#1B1B1B',
   lightText: '#EDEDED',
-  lightAccent: '#D2AB80',
   darkAccent: '#E5D2B8',
 
   // Structural Neutrals
@@ -17,6 +16,20 @@ const colors = {
   solidBlack: '#1E1E1E',
   cloudGray: '#C6C6C6',
   softSilver: '#E0E0E0',
+
+  // VOILÀ Admin Dashboard Colors
+  'midnight-black': '#1A1A2E',
+  'ivory-light': '#F8F8F8',
+  'soft-gold': '#D4AF37',
+  'deep-plum': '#6A0572',
+  'champagne-rose': '#F7CAC9',
+  'royal-blue': '#4169E1',
+  'emerald-green': '#50C878',
+  'blush-pink': '#FFC0CB',
+  'cloud-white': '#F0F0F0',
+  'ash-grey': '#B2BEB5',
+  'onyx-dark': '#35393C',
+  'charcoal-dark': '#36454F',
 
   // Typography Colors - Light Mode
   charcoalBlack: '#2E2E2E',

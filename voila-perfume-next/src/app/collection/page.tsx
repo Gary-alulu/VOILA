@@ -1,18 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../../../src/components/ProductCard';
-import { allProducts } from '../../../src/data/products';
 import { motion } from 'framer-motion';
 
 const CollectionPage = () => {
-  const [products, setProducts] = useState(allProducts);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/admin/products');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data.success) {
+          setProducts(data.data);
+        } else {
+          setError(data.error);
+        }
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   const [sortOrder, setSortOrder] = useState('featured');
   const [category, setCategory] = useState('all');
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(e.target.value);
-    // Implement sorting logic here
     let sortedProducts = [...products];
     if (e.target.value === 'price-asc') {
       sortedProducts.sort((a, b) => a.price - b.price);
@@ -24,22 +47,24 @@ const CollectionPage = () => {
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
-    // Implement filtering logic here
-    if (e.target.value === 'all') {
-      setProducts(allProducts);
-    } else {
-      // This is a placeholder for actual category filtering based on product data
-      // For now, it will just show all products
-      setProducts(allProducts);
-    }
+    // Re-fetch or re-filter products based on category if needed
+    // For now, we'll just set the category state
   };
+
+  if (loading) {
+    return <div className="text-center text-xl mt-[25vh]">Loading products...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-xl mt-[25vh] text-red-500">Error: {error}</div>;
+  }
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-8"
+      className="container mx-auto px-4 py-8 mt-[25vh]"
     >
       <h1 className="text-4xl font-bold text-center mb-8 font-playfair text-gray-800 dark:text-ivoryBeige">
         Our Exquisite Collection
@@ -82,18 +107,20 @@ const CollectionPage = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
         {products.map((product) => (
           <ProductCard
-            key={product.id}
-            productId={product.productId}
+            key={product._id}
+            productId={product._id}
             name={product.name}
             description={product.description}
-            image={product.image}
-            alt={product.alt}
+            image={product.imageUrl}
+            alt={product.name} // Using product name as alt text for now
             price={product.price}
-            originalPrice={product.originalPrice}
-            rating={product.rating}
+            originalPrice={product.originalPrice} // Assuming originalPrice might be part of the schema or can be added
+            rating={5} // Placeholder, assuming rating will be added to schema or calculated
+            category={product.category}
+            stock={product.stock}
           />
         ))}
       </div>

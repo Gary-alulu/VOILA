@@ -1,6 +1,6 @@
 import { Playfair_Display, Inter } from 'next/font/google';
 
-import { Playfair_Display, Inter, Caveat } from 'next/font/google';
+import { Playfair_Display, Inter, Caveat, Cormorant_Garamond, DM_Sans } from 'next/font/google';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -18,6 +18,20 @@ const caveat = Caveat({
   subsets: ['latin'],
   variable: '--font-caveat',
   weight: '400',
+  display: 'swap',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant-garamond',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  weight: ['400', '500', '700'],
   display: 'swap',
 });
 
@@ -71,9 +85,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning
+      className={`${playfairDisplay.variable} ${inter.variable} ${caveat.variable} ${cormorantGaramond.variable} ${dmSans.variable}`}
+    >
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} ${caveat.variable} antialiased`} 
+        className={`antialiased`}
       >
         <Providers>
           <ThemeProvider>

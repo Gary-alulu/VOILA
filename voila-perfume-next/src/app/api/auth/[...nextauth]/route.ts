@@ -14,10 +14,13 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         await dbConnect();
+        console.log('Attempting to authorize user:', credentials?.email);
 
+        // Proceed with regular email/password authentication
         const user = await User.findOne({ email: credentials?.email });
 
         if (!user) {
+          console.log('User not found for email:', credentials?.email);
           return null;
         }
 
@@ -27,10 +30,12 @@ const handler = NextAuth({
         );
 
         if (!isPasswordValid) {
+          console.log('Invalid password for user:', credentials?.email);
           return null;
         }
+        console.log('User authorized successfully:', user.email);
 
-        return { id: user._id.toString(), name: user.name, email: user.email, isProfileComplete: user.isProfileComplete };
+        return { id: user._id.toString(), name: user.name, email: user.email, isProfileComplete: user.isProfileComplete, role: user.role };
       },
     }),
   ],
@@ -42,12 +47,14 @@ const handler = NextAuth({
       if (user) {
         token.id = user.id;
         token.isProfileComplete = (user as any).isProfileComplete;
+        token.role = (user as any).role;
       }
       return token;
     },
     async session({ session, token }) {
       session.user.id = token.id;
       session.user.isProfileComplete = (token as any).isProfileComplete;
+      session.user.role = (token as any).role;
       return session;
     },
   },
