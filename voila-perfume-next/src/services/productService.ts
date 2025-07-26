@@ -1,35 +1,72 @@
 import { ProductCardProps } from '../components/ProductCard';
-import { popularProducts } from '../data/popularProducts';
-import { newArrivals } from '../data/newArrivals';
 import { ProductCardProps } from '../components/ProductCard';
 
-// Simulate an API call to fetch products with potential errors
-export async function fetchProducts(type: 'popular' | 'newArrivals'): Promise<ProductCardProps[]> {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      // Simulate a 20% chance of failure
-      if (Math.random() < 0.2) {
-        reject(new Error(`Failed to fetch ${type} products.`));
-        return;
-      }
+export async function fetchProducts(
+  section?: string,
+  page: number = 1,
+  limit: number = 10,
+  filters?: {
+    name?: string;
+    brand?: string;
+    notes?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    scentFamily?: string;
+    size?: string;
+  }
+): Promise<ProductCardProps[]> {
+  try {
+    let url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
+    url.searchParams.append('page', page.toString());
+    url.searchParams.append('limit', limit.toString());
 
-      if (type === 'popular') {
-        resolve(popularProducts);
-      } else if (type === 'newArrivals') {
-        resolve(newArrivals);
-      } else {
-        resolve([]);
+    if (section) {
+      url.searchParams.append('section', section);
+    }
+
+    if (filters) {
+      for (const [key, value] of Object.entries(filters)) {
+        if (value !== undefined && value !== null && value !== '') {
+          url.searchParams.append(key, value.toString());
+        }
       }
-    }, 1000); // Simulate network delay
-  });
+    }
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data || [];
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+    return [];
+  }
 }
 
-export const fetchProductById = (productId: string): Promise<ProductCardProps | null> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const allProducts = [...popularProducts, ...newArrivals];
-      const product = allProducts.find(p => p.productId === productId);
-      resolve(product || null);
-    }, 500);
-  });
+export const fetchProductById = async (productId: string): Promise<ProductCardProps | null> => {
+  try {
+    const response = await fetch(`/api/products/${productId}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data || null;
+  } catch (error) {
+    console.error(`Failed to fetch product with ID ${productId}:`, error);
+    return null;
+  }
+};
+
+export const fetchRelatedProducts = async (productId: string, limit: number = 4): Promise<ProductCardProps[]> => {
+  try {
+    const response = await fetch(`/api/products/${productId}/related?limit=${limit}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data || [];
+  } catch (error) {
+    console.error(`Failed to fetch related products for ${productId}:`, error);
+    return [];
+  }
 };

@@ -28,6 +28,14 @@ const ProductSchema = new mongoose.Schema({
     required: [true, 'Please provide the stock quantity for this product.'],
     default: 0,
   },
+  page: {
+    type: String,
+    required: false,
+  },
+  section: {
+    type: String,
+    required: false,
+  },
 });
 
 export default mongoose.models.Product || mongoose.model('Product', ProductSchema);

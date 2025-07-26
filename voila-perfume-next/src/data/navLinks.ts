@@ -3,5 +3,6 @@ export const navLinks = [
   { name: 'Collection', href: '/collection' },
   { name: 'Products', href: '/products' },
   { name: 'Contact Us', href: '/contact' },
-  { name: 'About', href: '/about' },
+  { name: 'FAQ', href: '/faq' },
+  { name: 'About Us', href: '/about-us' },
 ];

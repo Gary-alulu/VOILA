@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AnimatedLink from './AnimatedLink';
+import EmailSubscriptionForm from './EmailSubscriptionForm';
 
 /**
  * Footer component for the application.
@@ -34,15 +35,8 @@ export default function Footer() {
           <p className="text-lg text-mistGray dark:text-cloudedPearl mb-8">
             Be first to receive exclusive launches, scent stories, and secret sales.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-2 px-4">
-            <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-6 py-3 w-full sm:max-w-md rounded-xl bg-softSilver border border-cloudGray text-charcoalBlack placeholder:text-mistGray focus:outline-none focus:ring-2 focus:ring-imperialGold focus:border-transparent transition-all duration-300 dark:bg-glassPanelBlack dark:border-glassPanelBlack dark:text-whiteSnow dark:placeholder:text-cloudedPearl"
-              />
-            <button className="px-8 py-3 bg-imperialGold text-whiteSnow rounded-xl font-satoshi hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-300 transform hover:scale-[1.02] mt-2 sm:mt-0">
-              Subscribe
-            </button>
+          <div className="flex justify-center">
+            <EmailSubscriptionForm />
           </div>
         </motion.div>
       </div>
@@ -100,7 +94,8 @@ export default function Footer() {
             <h4 className="font-playfair text-lg mb-4 text-charcoalBlack dark:text-whiteSnow">Learn</h4>
             <ul className="space-y-2">
               <li><AnimatedLink href="/blog-stories" hoverEffect="translate-x">Blog & Stories</AnimatedLink></li>
-              <li><AnimatedLink href="#" hoverEffect="translate-x">FAQs</AnimatedLink></li>
+              <li><AnimatedLink href="/faq" hoverEffect="translate-x">FAQs</AnimatedLink></li>
+              <li><AnimatedLink href="/about-us" hoverEffect="translate-x">About Us</AnimatedLink></li>
               <li><AnimatedLink href="#" hoverEffect="translate-x">Scent Guide</AnimatedLink></li>
             </ul>
           </div>

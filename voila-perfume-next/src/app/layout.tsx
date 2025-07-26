@@ -36,7 +36,7 @@ const dmSans = DM_Sans({
 });
 
 import "./globals.css";
-import Navbar from "../components/Navbar";
+import ConditionalNavbar from "../components/ConditionalNavbar";
 import FooterClient from "../components/FooterClient";
 import { ThemeProvider } from "../components/ThemeProvider";
 import LoadingScreen from "../components/LoadingScreen";
@@ -91,10 +91,44 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "VOILÀ - Luxury Perfumes",
+              "url": "https://example.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://example.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "VOILÀ",
+              "url": "https://example.com",
+              "logo": "https://example.com/images/logo.png",
+              "sameAs": [
+                "https://www.facebook.com/voila",
+                "https://twitter.com/voila",
+                "https://www.instagram.com/voila"
+              ]
+            })
+          }}
+        />
         <Providers>
           <ThemeProvider>
             <ReduxProvider>
-              <Navbar />
+              <ConditionalNavbar />
               {/* The following links are typically part of the Navbar component, but are placed here for demonstration of insertion if needed in layout.tsx */}
               {/* <Link href="/about" className="hover:text-gray-300 transition-colors duration-300">About</Link> */}
               {/* <Link href="/contact" className="hover:text-gray-300 transition-colors duration-300">Contact</Link> */}

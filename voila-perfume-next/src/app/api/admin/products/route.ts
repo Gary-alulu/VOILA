@@ -15,8 +15,8 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   await dbConnect();
   try {
-    const body = await request.json();
-    const product = await Product.create(body);
+    const { page, section, ...productData } = await request.json();
+    const product = await Product.create({ ...productData, page, section });
     return NextResponse.json({ success: true, data: product }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -26,8 +26,8 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   await dbConnect();
   try {
-    const { id, ...body } = await request.json();
-    const product = await Product.findByIdAndUpdate(id, body, { new: true, runValidators: true });
+    const { id, page, section, ...productData } = await request.json();
+    const product = await Product.findByIdAndUpdate(id, { ...productData, page, section }, { new: true, runValidators: true });
     if (!product) {
       return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
     }

@@ -50,5 +50,10 @@ body {
 
 .dark body {
     background-color: #00001A; /* Darker Navy Blue, closer to black */
-    color: #F8F5F0;
+    color: #FFFFFF;
+}
+
+.dark body {
+    background-color: #00001A; /* Darker Navy Blue, closer to black */
+    color: #FFFFFF;
 }

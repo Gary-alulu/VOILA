@@ -1,32 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const [input, setInput] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSearch(input);
+  };
+
   return (
-    <div className="flex items-center justify-center w-full py-8 bg-transparent">
-      <div className="relative flex items-center w-full max-w-md rounded-full shadow-xl bg-white">
-        <div className="absolute left-4 flex items-center pointer-events-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full py-3 pl-12 pr-4 rounded-full bg-white focus:outline-none text-gray-700 placeholder-gray-500"
-        />
-      </div>
-    </div>
+    <form onSubmit={handleSearch} className="flex items-center space-x-2">
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={input}
+        onChange={handleInputChange}
+        className="flex-grow px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+      />
+      <button
+        type="submit"
+        className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Search
+      </button>
+    </form>
   );
 };
 

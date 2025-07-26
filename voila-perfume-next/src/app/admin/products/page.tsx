@@ -26,6 +26,8 @@ const AdminProductsPage = () => {
     category: '',
     stock: 0,
   });
+  const [selectedPage, setSelectedPage] = useState<'collection' | 'product' | ''>('');
+  const [selectedSection, setSelectedSection] = useState<'perfumes' | 'hairoils' | 'beautyAccessories' | ''>('');
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   const populateWithPlaceholders = () => {
@@ -88,6 +90,11 @@ const AdminProductsPage = () => {
     const { name, value, files } = e.target;
     if (name === 'imageFile' && files) {
       setImageFile(files[0]);
+    } else if (name === 'pageSelection') {
+      setSelectedPage(value as 'collection' | 'product' | '');
+      setSelectedSection(''); // Reset section when page changes
+    } else if (name === 'sectionSelection') {
+      setSelectedSection(value as 'perfumes' | 'hairoils' | 'beautyAccessories' | '');
     } else if (editingProduct) {
       setEditingProduct({ ...editingProduct, [name]: value });
     } else {
@@ -131,7 +138,7 @@ const AdminProductsPage = () => {
     try {
       const method = editingProduct ? 'PUT' : 'POST';
       const url = '/api/admin/products';
-      const body = editingProduct ? { id: editingProduct._id, ...editingProduct } : newProduct;
+      const body = editingProduct ? { id: editingProduct._id, ...editingProduct } : { ...newProduct, page: selectedPage, section: selectedSection };
 
       const response = await fetch(url, {
         method,
@@ -153,6 +160,8 @@ const AdminProductsPage = () => {
           stock: 0,
         });
         setEditingProduct(null);
+        setSelectedPage('');
+        setSelectedSection('');
         fetchProducts();
       } else {
         setError(data.error);
@@ -253,6 +262,39 @@ const AdminProductsPage = () => {
               required
             ></textarea>
           </div>
+          <div>
+            <label htmlFor="pageSelection" className="block text-gray-700 dark:text-gray-300">Upload to Page</label>
+            <select
+              id="pageSelection"
+              name="pageSelection"
+              value={selectedPage}
+              onChange={handleInputChange}
+              className="w-full px-3 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-ivoryBeige border-gray-300 dark:border-gray-600"
+              required
+            >
+              <option value="">Select Page</option>
+              <option value="collection">Collection Page</option>
+              <option value="product">Product Page</option>
+            </select>
+          </div>
+          {selectedPage === 'product' && (
+            <div>
+              <label htmlFor="sectionSelection" className="block text-gray-700 dark:text-gray-300">Upload to Section</label>
+              <select
+                id="sectionSelection"
+                name="sectionSelection"
+                value={selectedSection}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-ivoryBeige border-gray-300 dark:border-gray-600"
+                required
+              >
+                <option value="">Select Section</option>
+                <option value="perfumes">Perfumes</option>
+                <option value="hairoils">HairOils</option>
+                <option value="beautyAccessories">Beauty accessories</option>
+              </select>
+            </div>
+          )}
           <div>
             <label htmlFor="price" className="block text-gray-700 dark:text-gray-300">Price</label>
             <input

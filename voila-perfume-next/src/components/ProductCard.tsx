@@ -11,12 +11,12 @@ import Link from 'next/link';
 interface ProductCardProps {
   name: string;
   description: string;
-  image: string;
+  imageUrl: string;
   alt: string;
   price: number;
   originalPrice?: number;
   rating: number;
-  productId: string;
+  _id: string;
   category: string;
   stock: number;
 }
@@ -24,22 +24,22 @@ interface ProductCardProps {
 export default function ProductCard({
   name,
   description,
-  image,
+  imageUrl,
   alt,
   price,
   originalPrice,
   rating,
-  productId,
+  _id,
   category,
   stock,
 }: ProductCardProps) {
   return (
-    <Link href={`/products/${productId}`} passHref>
+    <Link href={`/products/${_id}`} passHref>
       <div
         className="relative w-full max-w-sm p-4 rounded-2xl shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-20 bg-white border border-opacity-30 border-white-200 overflow-hidden cursor-pointer"
-        data-product-id={productId}
+        data-product-id={_id}
       >
-        <ProductImage image={image} alt={alt} />
+        <ProductImage image={imageUrl} alt={alt} />
         <ProductInfo name={name} description={description} rating={rating} />
         <ProductPrice price={price} originalPrice={originalPrice} />
         <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
@@ -50,7 +50,7 @@ export default function ProductCard({
         <div className="flex justify-between items-center mt-4">
           {/* Placeholder for Size Selector (Optional on hover/card expansion) */}
           {/* <div className="flex space-x-2">...</div> */}
-          <FavoriteToggle />
+          <FavoriteToggle productId={_id} />
           <AddToCartButton />
         </div>
       </div>

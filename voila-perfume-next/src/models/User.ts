@@ -33,6 +33,20 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: 'user',
   },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  emailVerificationToken: String,
+  emailVerificationExpires: Date,
+  wishlist: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+    },
+  ],
 });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);

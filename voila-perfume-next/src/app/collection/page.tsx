@@ -3,33 +3,27 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../../../src/components/ProductCard';
 import { motion } from 'framer-motion';
+import { fetchProducts } from '../../services/productService';
+import { ProductCardProps } from '../../components/ProductCard';
 
 const CollectionPage = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const getProducts = async () => {
       try {
-        const response = await fetch('/api/admin/products');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        if (data.success) {
-          setProducts(data.data);
-        } else {
-          setError(data.error);
-        }
-      } catch (e) {
-        setError(e.message);
+        const fetchedProducts = await fetchProducts('collection');
+        setProducts(fetchedProducts);
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProducts();
+    getProducts();
   }, []);
   const [sortOrder, setSortOrder] = useState('featured');
   const [category, setCategory] = useState('all');
@@ -117,10 +111,10 @@ const CollectionPage = () => {
             image={product.imageUrl}
             alt={product.name} // Using product name as alt text for now
             price={product.price}
-            originalPrice={product.originalPrice} // Assuming originalPrice might be part of the schema or can be added
-            rating={5} // Placeholder, assuming rating will be added to schema or calculated
             category={product.category}
             stock={product.stock}
+            originalPrice={product.originalPrice}
+            rating={product.rating}
           />
         ))}
       </div>

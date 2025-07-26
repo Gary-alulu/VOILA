@@ -29,8 +29,14 @@ To set up the project locally, follow these steps:
 3.  **Environment Variables:**
     Create a `.env.local` file in the root of the `voila-perfume-next` directory and add your environment variables. For MongoDB connection, you'll need:
     ```
-    MONGODB_URI=mongodb://localhost:27017/voila_perfume
-    ```
+MONGODB_URI=mongodb://localhost:27017/voila_perfume
+NEXTAUTH_SECRET=YOUR_NEXTAUTH_SECRET
+NEXTAUTH_URL=http://localhost:3000
+EMAIL_SERVICE=YOUR_EMAIL_SERVICE_PROVIDER (e.g., Gmail)
+EMAIL_USERNAME=YOUR_EMAIL_USERNAME
+EMAIL_PASSWORD=YOUR_EMAIL_PASSWORD
+EMAIL_FROM=YOUR_EMAIL_ADDRESS
+```
 
 ## Running the Project
 
@@ -48,9 +54,28 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 -   `src/app`: Contains Next.js App Router pages and API routes.
 -   `src/components`: Reusable React components.
+-   `src/data`: Static data for navigation links and other content.
 -   `src/lib`: Utility functions and MongoDB connection logic.
+-   `src/models`: Mongoose schemas for database models (e.g., User, NewsletterSubscriber).
 -   `src/styles`: Global styles and Tailwind CSS configurations.
 -   `src/types`: TypeScript type definitions.
+
+## Features
+
+### User Authentication & Authorization
+-   User registration with email verification.
+-   User login and session management using NextAuth.js.
+-   Forgot password and reset password functionality.
+-   User profile management (update name, phone, address).
+
+### Content & Engagement
+-   Comprehensive FAQ section.
+-   Detailed About Us page.
+-   Contact Us page with multiple contact methods.
+
+### Marketing & Sales
+-   Email newsletter subscription.
+-   Related product recommendations on product detail pages.
 
 ## Contributing
 

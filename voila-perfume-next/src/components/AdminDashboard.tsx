@@ -57,27 +57,27 @@ export default function AdminDashboard() {
          <nav>
            <ul className="space-y-4">
              <li>
-               <a href="#" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Dashboard">
+               <a href="/admin" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Dashboard">
                  <Icon name="dashboard" className="w-6 h-6" />
                </a>
              </li>
              <li>
-               <a href="#" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Users">
+               <a href="/admin/users" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Users">
                  <Icon name="users" className="w-6 h-6" />
                </a>
              </li>
              <li>
-               <a href="#" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Products">
+               <a href="/admin/products" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Products">
                  <Icon name="box" className="w-6 h-6" />
                </a>
              </li>
              <li>
-               <a href="#" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Orders">
+               <a href="/admin/orders" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Orders">
                  <Icon name="shopping-cart" className="w-6 h-6" />
                </a>
              </li>
              <li>
-               <a href="#" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Settings">
+               <a href="/admin/settings" className="flex items-center justify-center p-3 rounded hover:bg-gray-700" title="Settings">
                  <Icon name="settings" className="w-6 h-6" />
                </a>
              </li>

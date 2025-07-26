@@ -1,10 +1,36 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FaCcVisa, FaApplePay, FaStripe } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/app/store';
+import { removeFromCart, updateQuantity } from '@/features/cart/cartSlice';
+import Image from 'next/image';
+import Link from 'next/link';
 
 
 const CartPage = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const calculateSubtotal = () => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const subtotal = calculateSubtotal();
+  const shippingThreshold = 100;
+  const isFreeShipping = subtotal >= shippingThreshold;
+
+  const handleRemoveItem = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const handleUpdateQuantity = (id: string, quantity: number) => {
+    if (quantity > 0) {
+      dispatch(updateQuantity({ id, quantity }));
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,10 +56,51 @@ const CartPage = () => {
         <div className="w-full md:w-3/5"
         >
           <h2 className="text-2xl font-serif mb-6 dark:text-white">Your Items</h2>
-          {/* Placeholder for Cart Item Cards */}
-          <div className="bg-light-bg-alt dark:bg-dark-bg-alt p-6 rounded-2xl shadow-xl min-h-[300px] flex items-center justify-center">
-            <p className="text-gray-500 dark:text-gray-400">Cart items will be displayed here.</p>
-          </div>
+          {cartItems.length === 0 ? (
+            <div className="bg-light-bg-alt dark:bg-dark-bg-alt p-6 rounded-2xl shadow-xl min-h-[300px] flex items-center justify-center">
+              <p className="text-gray-500 dark:text-gray-400">Your cart is scent-free.</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {cartItems.map((item) => (
+                <div key={item.id} className="flex items-center bg-light-bg-alt dark:bg-dark-bg-alt p-4 rounded-2xl shadow-md">
+                  <Image
+                    src={item.image || '/images/default-perfume.png'} // Assuming item has an image property
+                    alt={item.name}
+                    width={80}
+                    height={80}
+                    className="rounded-lg object-cover mr-4"
+                  />
+                  <div className="flex-grow">
+                    <h3 className="font-semibold text-lg dark:text-white">{item.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">${item.price.toFixed(2)}</p>
+                    <div className="flex items-center mt-2">
+                      <button
+                        onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+                        className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-l-md focus:outline-none"
+                      >
+                        -
+                      </button>
+                      <span className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-1">{item.quantity}</span>
+                      <button
+                        onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+                        className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-r-md focus:outline-none"
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() => handleRemoveItem(item.id)}
+                        className="ml-4 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600 focus:outline-none"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <span className="font-bold text-lg dark:text-white">${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right Section: Summary + CTA (40% width on desktop) */}
@@ -46,9 +113,9 @@ const CartPage = () => {
               <h3 className="text-lg font-semibold mb-2 dark:text-white">Payment Preview</h3>
               <div className="flex gap-2 text-gray-500 dark:text-gray-400">
                 {/* Placeholder for payment icons */}
-                <span>VISA</span>
-                <span>Apple Pay</span>
-                <span>Stripe</span>
+                <FaCcVisa size={24} />
+                <FaApplePay size={24} />
+                <FaStripe size={24} />
               </div>
             </div>
 
@@ -70,11 +137,13 @@ const CartPage = () => {
               <h3 className="text-lg font-semibold mb-3 dark:text-white">Order Summary</h3>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600 dark:text-gray-300">Subtotal:</span>
-                <span className="font-medium dark:text-white">$0.00</span>
+                <span className="font-medium dark:text-white">${subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-600 dark:text-gray-300">Shipping:</span>
-                <span className="text-muted-gold dark:text-rose-glow font-medium">Free shipping over $100</span>
+                <span className="text-muted-gold dark:text-rose-glow font-medium">
+                  {isFreeShipping ? 'Free' : `$${(shippingThreshold - subtotal).toFixed(2)} away from free shipping`}
+                </span>
               </div>
               <div className="mb-4">
                 <label htmlFor="discount-code" className="block text-sm font-light uppercase text-gray-600 dark:text-gray-300 mb-2">
@@ -96,17 +165,19 @@ const CartPage = () => {
               </div>
               <div className="flex justify-between items-center border-t border-gray-300 dark:border-gray-600 pt-4 mt-4">
                 <span className="text-xl font-semibold dark:text-white">Total:</span>
-                <span className="text-3xl font-bold text-royal-purple dark:text-soft-gold">$0.00</span>
+                <span className="text-3xl font-bold text-royal-purple dark:text-soft-gold">${subtotal.toFixed(2)}</span>
               </div>
             </div>
 
             {/* Call-To-Action Button */}
-            <button
-              className="w-full bg-royal-purple text-white py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg"
-              disabled={true} // Placeholder for empty cart state
-            >
-              Proceed to Checkout
-            </button>
+            <Link href="/checkout">
+              <button
+                className="w-full bg-royal-purple text-white py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg"
+                disabled={cartItems.length === 0}
+              >
+                Proceed to Checkout
+              </button>
+            </Link>
 
             {/* Brand Message */}
             <p className="text-center text-sm italic text-gray-500 dark:text-gray-400 mt-6">
@@ -117,18 +188,20 @@ const CartPage = () => {
       </div>
 
       {/* Empty Cart UX Placeholder */}
-      {false && ( // This will be conditionally rendered based on cart state
+      {cartItems.length === 0 && (
         <div
           className="flex flex-col items-center justify-center mt-20 text-gray-500 dark:text-gray-400"
         >
           {/* Placeholder for glowing perfume bottle icon */}
           <div className="text-6xl mb-4">🧴</div>
           <p className="text-xl mb-6">Your cart is scent-free.</p>
-          <button
-            className="bg-soft-gold text-white py-3 px-8 rounded-full font-semibold shadow-lg"
-          >
-            Explore Collections
-          </button>
+          <Link href="/collection">
+            <button
+              className="bg-soft-gold text-white py-3 px-8 rounded-full font-semibold shadow-lg"
+            >
+              Explore Collections
+            </button>
+          </Link>
         </div>
       )}
     </div>
